@@ -44,7 +44,7 @@ paginate: true
 ## 🔍 MCPの構成
 - MCPホスト：LLM、チャット画面、MCPクライアントを内蔵したアプリ
   - Claude Desktop, Cline, roo code
-- MCPクライアント：MCPサーバーとやり取りを行う
+- MCPクライアント：MCPサーバーとやり取りを行うためのモジュール
   - 基本的にMCPホストに内蔵されている
 - MCPサーバー：複数ツールを持っていて実際に処理を行う
   - Githubで公開されているものを使ったり自作したりする
