@@ -1,7 +1,34 @@
 ---
 marp: true
-theme: default
 paginate: true
+style: |
+  @import 'https://cdn.jsdelivr.net/npm/marp-core@latest/lib/themes/default.css';
+  
+  /* font */
+  @import 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap';
+
+  section {
+    background-color:rgb(255, 255, 255);
+    color:rgb(0, 0, 0);
+    font-family: 'Noto Sans JP', sans-serif;
+    padding-right: 30px;
+  }
+
+  h1 {
+    font-size: 2em;
+    font-weight: bold;
+  }
+
+  ul li {
+    line-height: 1.8;
+    margin-bottom: 10px;
+  }
+
+  footer {
+    color: #cccccc;
+    font-size: 0.8em;
+    text-align: right;
+  }
 ---
 
 # なぜ今、MCPなのか？
