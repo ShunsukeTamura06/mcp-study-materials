@@ -1,363 +1,40 @@
 /*
- * Elegant Markdown PDF Style
- * シンプルで洗練されたMarkdown PDF出力用CSS
- * 
- * 使用方法:
- * VS Codeの settings.json に以下を追加:
- * {
- *   "markdown-pdf.styles": ["path/to/markdown-pdf-style.css"],
- *   "markdown-pdf.includeDefaultStyles": false
- * }
+ * Simple Markdown PDF Style
+ * シンプルなMarkdown PDF出力用CSS
  */
 
-/* ==========================================================================
-   Base Typography - 基本タイポグラフィ
-   ========================================================================== */
-
+/* 基本設定 */
 body {
-    font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic Medium', 
-                 'Meiryo', 'Source Han Sans', 'Arial', sans-serif;
+    font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic Medium', 'Meiryo', sans-serif;
     font-size: 12px;
-    line-height: 1.7;
-    color: #2c3e50;
-    margin: 0;
-    padding: 20px;
-    background-color: #ffffff;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
+    line-height: 1.6;
+    color: #333;
+    margin: 20px;
 }
 
-/* ==========================================================================
-   Headers - 見出し
-   ========================================================================== */
-
-h1 {
-    color: #1a2332;
-    font-size: 24px;
-    font-weight: 700;
-    border-bottom: 3px solid #3498db;
-    padding-bottom: 12px;
-    margin-top: 30px;
-    margin-bottom: 20px;
-    page-break-after: avoid;
-}
-
-h2 {
-    color: #34495e;
-    font-size: 20px;
-    font-weight: 600;
-    border-bottom: 2px solid #95a5a6;
-    padding-bottom: 8px;
-    margin-top: 25px;
-    margin-bottom: 15px;
-    page-break-after: avoid;
-}
-
-h3 {
-    color: #34495e;
-    font-size: 16px;
-    font-weight: 600;
-    margin-top: 20px;
-    margin-bottom: 12px;
-    page-break-after: avoid;
-}
-
-h4, h5, h6 {
-    color: #5a6c7d;
-    font-weight: 600;
-    margin-top: 15px;
-    margin-bottom: 10px;
-    page-break-after: avoid;
-}
-
-/* ==========================================================================
-   Emphasis - 強調表示（**記法対応）
-   ========================================================================== */
-
-strong, b {
-    font-weight: 700 !important;
-    color: #2c3e50 !important;
-    background-color: rgba(255, 235, 59, 0.2);
-    padding: 1px 3px;
-    border-radius: 2px;
-}
-
-em, i {
-    font-style: italic;
-    color: #34495e;
-}
-
-/* 日本語引用符問題の対応 */
-strong:has-text,
-b:has-text {
-    display: inline;
-    font-weight: 700 !important;
-}
-
-/* ==========================================================================
-   Tables - 表（縦線問題解決）
-   ========================================================================== */
-
+/* 表のスタイル（縦線問題解決） */
 table {
     border-collapse: collapse !important;
-    border-spacing: 0 !important;
     width: 100% !important;
     margin: 20px 0 !important;
     font-size: 11px;
-    background-color: #ffffff;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    page-break-inside: avoid;
 }
 
-/* 全ての境界線を強制表示 */
-table, thead, tbody, tr, th, td {
-    border: 1px solid #34495e !important;
+table, th, td {
+    border: 1px solid #333 !important;
 }
 
 th {
-    background-color: #34495e !important;
-    color: #ffffff !important;
-    font-weight: 600 !important;
-    padding: 12px 10px !important;
-    text-align: left !important;
-    border: 1px solid #2c3e50 !important;
+    background-color: #f0f0f0 !important;
+    font-weight: bold !important;
+    padding: 8px !important;
 }
 
 td {
-    padding: 10px !important;
-    vertical-align: top !important;
-    border: 1px solid #34495e !important;
-    background-color: #ffffff;
+    padding: 8px !important;
 }
 
-/* ストライプ効果 */
-tr:nth-child(even) td {
-    background-color: #f8f9fa !important;
-}
-
-/* 最初と最後の列の境界線を強調 */
-th:first-child,
-td:first-child {
-    border-left: 2px solid #2c3e50 !important;
-}
-
-th:last-child,
-td:last-child {
-    border-right: 2px solid #2c3e50 !important;
-}
-
-/* ==========================================================================
-   Code Blocks - コードブロック
-   ========================================================================== */
-
-code {
-    background-color: #f1f2f6;
-    color: #2f3542;
-    padding: 2px 6px;
-    border-radius: 3px;
-    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
-    font-size: 11px;
-    border: 1px solid #ddd;
-}
-
-pre {
-    background-color: #2f3542;
-    color: #f1f2f6;
-    padding: 15px;
-    border-radius: 6px;
-    overflow-x: auto;
-    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
-    font-size: 11px;
-    line-height: 1.5;
-    border: 1px solid #57606f;
-    margin: 15px 0;
+/* 改ページ制御 */
+table, pre {
     page-break-inside: avoid;
-}
-
-pre code {
-    background: transparent;
-    color: inherit;
-    padding: 0;
-    border: none;
-    border-radius: 0;
-}
-
-/* ==========================================================================
-   Lists - リスト
-   ========================================================================== */
-
-ul, ol {
-    margin: 10px 0;
-    padding-left: 20px;
-}
-
-li {
-    margin: 5px 0;
-    line-height: 1.6;
-}
-
-ul li {
-    list-style-type: disc;
-}
-
-ol li {
-    list-style-type: decimal;
-}
-
-/* ネストしたリスト */
-ul ul, ol ol, ul ol, ol ul {
-    margin: 3px 0;
-}
-
-/* ==========================================================================
-   Blockquotes - 引用
-   ========================================================================== */
-
-blockquote {
-    border-left: 4px solid #3498db;
-    margin: 15px 0;
-    padding: 10px 15px;
-    background-color: #f8f9fa;
-    color: #5a6c7d;
-    font-style: italic;
-    page-break-inside: avoid;
-}
-
-blockquote p {
-    margin: 0;
-}
-
-/* ==========================================================================
-   Links - リンク
-   ========================================================================== */
-
-a {
-    color: #3498db;
-    text-decoration: underline;
-}
-
-a:hover {
-    color: #2980b9;
-}
-
-/* ==========================================================================
-   Images - 画像
-   ========================================================================== */
-
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 15px auto;
-    border-radius: 4px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    page-break-inside: avoid;
-}
-
-/* ==========================================================================
-   Horizontal Rules - 水平線
-   ========================================================================== */
-
-hr {
-    border: none;
-    height: 2px;
-    background: linear-gradient(to right, #3498db, #95a5a6, #3498db);
-    margin: 20px 0;
-    page-break-after: avoid;
-}
-
-/* ==========================================================================
-   Page Breaking - 改ページ制御
-   ========================================================================== */
-
-h1, h2, h3 {
-    page-break-after: avoid;
-}
-
-table, pre, blockquote, img {
-    page-break-inside: avoid;
-}
-
-/* 表の行が途中で切れないようにする */
-tr {
-    page-break-inside: avoid;
-}
-
-/* ==========================================================================
-   Print Specific - 印刷特有の設定
-   ========================================================================== */
-
-@media print {
-    body {
-        font-size: 11px;
-        line-height: 1.6;
-    }
-    
-    h1 {
-        font-size: 22px;
-    }
-    
-    h2 {
-        font-size: 18px;
-    }
-    
-    table {
-        font-size: 10px;
-    }
-    
-    /* 不要な余白を削除 */
-    @page {
-        margin: 2cm 1.5cm;
-    }
-}
-
-/* ==========================================================================
-   Utility Classes - ユーティリティクラス
-   ========================================================================== */
-
-/* 改ページを強制 */
-.page-break {
-    page-break-before: always;
-}
-
-/* 改ページを避ける */
-.no-break {
-    page-break-inside: avoid;
-}
-
-/* 中央揃え */
-.center {
-    text-align: center;
-}
-
-/* 右寄せ */
-.right {
-    text-align: right;
-}
-
-/* 重要なハイライト */
-.highlight {
-    background-color: #fff3cd;
-    border: 1px solid #ffeaa7;
-    padding: 10px;
-    border-radius: 4px;
-    margin: 10px 0;
-}
-
-/* 注意事項 */
-.note {
-    background-color: #e8f4f8;
-    border-left: 4px solid #3498db;
-    padding: 10px 15px;
-    margin: 10px 0;
-    border-radius: 0 4px 4px 0;
-}
-
-/* 警告 */
-.warning {
-    background-color: #fff3cd;
-    border-left: 4px solid #f39c12;
-    padding: 10px 15px;
-    margin: 10px 0;
-    border-radius: 0 4px 4px 0;
 }
